@@ -1,4 +1,4 @@
-package com.example.basicscodelab
+package com.example.composebasics
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -75,12 +75,20 @@ fun OnboardingScreen(
 @Composable
 private fun Greetings(
     modifier: Modifier = Modifier,
-    names: List<String> = List(1000) { "$it" }
+    names: List<String> = List(1000) {"$it"}
 ) {
     LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
-        items(items = names) {name ->
+        items(items = names) { name ->
             Greeting(name = name)
         }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 320, heightDp = 320)
+@Composable
+fun OnboardingPreview() {
+    ComposeBasicsTheme {
+        OnboardingScreen(onContinueClicked = {})
     }
 }
 
@@ -121,18 +129,10 @@ fun GreetingPreview() {
     }
 }
 
-//@Preview
-//@Composable
-//fun MyAppPreview() {
-//    ComposeBasicsTheme {
-//        MyApp(Modifier.fillMaxSize())
-//    }
-//}
-
-//@Preview(showBackground = true, widthDp = 320, heightDp = 320)
-//@Composable
-//fun OnboardingPreview() {
-//    ComposeBasicsTheme {
-//        OnboardingScreen(onContinueClicked = {})
-//    }
-//}
+@Preview
+@Composable
+fun MyAppPreview() {
+    ComposeBasicsTheme {
+        MyApp(Modifier.fillMaxSize())
+    }
+}
